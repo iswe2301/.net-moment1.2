@@ -1,5 +1,67 @@
-@page "/json"
+@page "/ramschema"
+@inject HttpClient Http
 
-<PageTitle>JSON - BlazorApp</PageTitle>
+<PageTitle>Ramschema - BlazorApp</PageTitle>
 
-<h2>JSON</h2>
+<h2 class="mb-4">Ramschema</h2>
+
+@code {
+    // Array för kurser
+    private Schedule[]? schedule;
+
+    // Http-anrop
+    protected override async Task OnInitializedAsync()
+    {
+        schedule = await Http.GetFromJsonAsync<Schedule[]>("https://dahlgren.miun.se/ramschema.php");
+    }
+
+    // Modell för ramchema
+    public class Schedule
+    {
+        public string? Code { set; get; }
+        public string? CourseName { set; get; }
+        public string? Progression { set; get; }
+        public string? Syllabus { set; get; }
+    }
+}
+
+<!-- Kontrollera om schedule är null, om det är det visas en laddningstext, annars visas tabellen -->
+@if (schedule == null)
+{
+    <div class="text-center">
+        <!-- Spinner för att visa att sidan laddas -->
+        <div class="spinner-border text-primary" role="status"></div>
+        <p>Laddar...</p>
+    </div>
+}
+else
+{
+    <!-- Responsiv tabell för att visa kurser -->
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Kurskod</th>
+                    <th>Kursnamn</th>
+                    <th>Progression</th>
+                    <th>Kursplan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loopa igenom kurslistan och skriv ut varje kurs -->
+                @foreach (var course in schedule)
+                {
+                    <tr>
+                        <td>@course.Code</td>
+                        <td>@course.CourseName</td>
+                        <td>@course.Progression</td>
+                        <td>
+                            <!-- Länk till kursplan, öppnas igenom ny flik -->
+                            <a href="@course.Syllabus" class="btn btn-primary btn-sm" target="_blank">Visa kursplan</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

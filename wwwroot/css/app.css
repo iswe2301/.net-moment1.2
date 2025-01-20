@@ -89,6 +89,14 @@ footer p {
     display: none;
 }
 
+th {
+    font-weight: 400;
+}
+
+td {
+    font-size: 14px;
+}
+
 /* Styling för mindre skärmar */
 @media (max-width: 768px) {
     footer {

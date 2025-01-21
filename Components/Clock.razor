@@ -1,0 +1,29 @@
+<div class="clock">
+    <!-- Skriv ut aktuell tid dynamiskt -->
+    @currentTime
+</div>
+
+@code {
+    private string currentTime = DateTime.Now.ToString("HH:mm:ss"); // Aktuell tid
+    private Timer? timer; // Timer för att uppdatera tiden
+
+    // Initiera komponenten
+    protected override void OnInitialized()
+    {
+        // Starta en timer som uppdaterar tiden varje sekund
+        timer = new Timer(UpdateTime, null, 0, 1000);
+    }
+
+    // Metod för att uppdatera tiden
+    private void UpdateTime(object? state)
+    {
+        currentTime = DateTime.Now.ToString("HH:mm:ss"); // Sätt aktuell tid till nuvarande tid
+        InvokeAsync(StateHasChanged); // Uppdatera komponenten
+    }
+
+    // Metod för att frigöra resurser
+    public void Dispose()
+    {
+        timer?.Dispose(); // Stoppa timern
+    }
+}

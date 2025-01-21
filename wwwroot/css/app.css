@@ -73,6 +73,14 @@ main {
     min-height: 75vh;
 }
 
+/* Styling för klocka */
+.clock {
+    font-weight: bold;
+    text-align: center;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
 /* Footer */
 footer {
     border: 1px solid #ccc;

@@ -1,18 +1,53 @@
 ﻿@page "/"
 
-<PageTitle>Start - BlazorApp</PageTitle>
+<PageTitle>Start - BlazorApp</PageTitle> <!-- Titel på sidan -->
 
 <article>
     <h2 class="mb-4">Välkommen!</h2>
     <p>
-        Denna webbplats är skapad som en del av kursen Webbutveckling med .NET som ingår i Webbutvecklingsprogrammet på
-        Mittuniversitetet.
+        Denna webbplats är skapad som en del av kursen Webbutveckling med .NET, som ingår i
+        Webbutvecklingsprogrammet vid Mittuniversitetet. Laborationen fokuserar på att ge kunskap om hur man bygger
+        dynamiska och responsiva webbplatser med Blazor WebAssembly.
     </p>
 
     <section>
         <h3 class="mt-4 mb-3">Om uppgiften</h3>
         <p>
-            Uppgiften ingår i kursmomentet Grunderna i .NET. Målet med uppgiften är att:
+            Kursen Webbutveckling med .NET syftar till att ge en djupare förståelse för utveckling av
+            moderna webbapplikationer med .NET. Detta inkluderar bland annat att arbeta med Blazor WebAssembly och
+            förstå hur det
+            fungerar som en klientbaserad ramverk.</p>
+        <p>
+            Uppgiften ingår i kursmomentet Grunderna i .NET. Målet med uppgiften är att få en grundläggande förståelse
+            för hur Blazor WebAssembly fungerar.</p>
+    </section>
+
+    <section>
+        <h3 class="mt-4 mb-3">Innehåll</h3>
+        <p>
+            Webbplatsen består av följande sidor/komponenter:
+        </p>
+        <ul>
+            <li>En startsida som beskriver uppgiften och kursen.</li>
+            <li>En undersida för konverteringar:
+                <ul>
+                    <li>Konvertera meter till fot (feet).</li>
+                    <li>Konvertera km/h till miles/hour.</li>
+                </ul>
+            </li>
+            <li>En undersida för Webbutvecklingsprogrammets ramschema som hämtar data via HttpClient och visar kurserna
+                i tabellform.</li>
+            <li>En komponent i form av en dynamisk klocka som användas i footern</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3 class="mt-4 mb-3">PWA</h3>
+        <p>
+            Denna webbplats är implementerad som en Progressive Web App (PWA), vilket innebär att den
+            kan
+            installeras på enheter (dator/mobil) som en app och fungera offline.
         </p>
     </section>
+
 </article>
